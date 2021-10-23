@@ -118,6 +118,7 @@ class Account {
         }
 
     }
+    
     private function validatePasswords($pw, $pw2) {
         if($pw !== $pw2) {
             array_push($this->errorArray, Constants::$passwordsDontMatch);
@@ -128,12 +129,6 @@ class Account {
             Global $errorArray;
             array_push($this->errorArray, Constants::$passwordLenght);
         }
-        
-        // Global $con;
-        // $query = $con->prepare("SELECT * FROM users WHERE passwod=:pw");
-        // $query->bindValue(":pw", $pw);
-    
-        // $query->execute();
     }
 
     public function getError($error) {
