@@ -6,17 +6,22 @@
     
     
     $account = new Account($con);
-    
-        if(isset($_POST["submitButton"])) {
-            $userName = FormSanitizer::sanitizeFormUserName($_POST["username"]);
-            $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
-            $succes = $account->login($userName, $password);
-    
-            if($succes){
-                header("Location: index.php"); //if data was introduced succesfully, redirect to this page
-                echo ("succes");
-            }
+
+    if(isset($_POST["submitButton"])) {
+        $userName = FormSanitizer::sanitizeFormUserName($_POST["username"]);
+        $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
+        $succes = $account->login($userName, $password);
+
+        if($succes){
+            $_SESSION["usserLoggedIn"] = $userName;
+            header("Location: index.php"); //if data was introduced succesfully, redirect to this page
         }
+    }
+
+    function getInputValue($name) {
+        if(isset($_POST[$name])) {
+            echo $_POST[$name];        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +44,7 @@
                 <form method="POST">
                      <?php echo $account->getError(Constants::$loginFailed); ?>
 
-                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" value = "<?php getInputValue("username")?>" required>
 
                     <input type="password" name="password" placeholder="Password" required>
 

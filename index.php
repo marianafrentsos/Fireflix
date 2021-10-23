@@ -1,3 +1,19 @@
+<?php
+require_once("includes/config.php");
+require_once("includes/classes/PreviewProvider.php");
+require_once("includes/classes/Entity.php");
+
+if(isset($_SESSION["userLoggedIn"])) {
+    header("Location: register.php");
+}
+
+$userLoggedIn = $_SESSION["usserLoggedIn"];
+
+$preview = new PreviewProvider($con, $userLoggedIn);
+$preview->createPreviewVideo(null);
+
+?>
+
 <!DOCTYPE html>
     <html lang="en">
         <head>
