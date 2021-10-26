@@ -43,12 +43,13 @@ class CategoryContainers {
             return;
         }
 
-        $entitiesHtml = "";
+        $entitiesHtml = "<div class='categorieRow'>";
+        $previewProvider = new PreviewProvider($this->con, $this->username);
 
         foreach($entities as $entity) {
-            $entitiesHtml .=$entity->getName();
+            $entitiesHtml .= $previewProvider->createEntityPreviewSquare($entity);
         }
-        return $entitiesHtml . "<br>";
+        return $entitiesHtml . "</div>";
         
     }
 }

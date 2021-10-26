@@ -106,7 +106,20 @@ body {
 .previewContainer {
   position: relative;
   display: flex;
-  flex-direction: column;
+}
+.previewContainer.small {
+  min-width: 17%;
+  height: 129px;
+  margin-right: 4px;
+  display: inline-flex;
+}
+
+.previewContainer.small img,
+.previewContainer.small a {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .previewOverlay {
@@ -152,4 +165,8 @@ button i {
 .mainDetails button:hover {
   background-color: #e6e6e6;
   color: #000;
+}
+
+.categorieRow {
+  display: flex;
 }

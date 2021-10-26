@@ -29,16 +29,28 @@ class PreviewProvider {
                     </video>
 
                     <div class='previewOverlay'>
-                    <div class='mainDetails'>
-                    <h3 class='movieTitle'>$name</h3>
-                    <div class='buttons'>
-                    <button><i class='fas fa-play'></i> Play</button>
-                    <button onClick=volumeToggle(this)><i class='fas fa-volume-mute'></i></button>
+                        <div class='mainDetails'>
+                            <h3 class='movieTitle'>$name</h3>
+                            <div class='buttons'>
+                                <button><i class='fas fa-play'></i> Play </button>
+                                <button onClick=volumeToggle(this)><i class='fas fa-volume-mute'></i></button>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    
-                    </div>
-                <div>";
+                </div>";
+    }
+
+    public function createEntityPreviewSquare($entity) {
+
+        $id = $entity->getId();
+        $thumbnail = $entity->getThumbnail();
+        $name = $entity->getName();
+
+        return "<div class='previewContainer small'>
+                     <a href='entity.php?id=$id'>
+                            <img src='$thumbnail' title='$name'>
+                    </a>
+                </div>";
     }
 
     private function getRandomEntity() {
