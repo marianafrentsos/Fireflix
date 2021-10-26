@@ -1,17 +1,8 @@
 <?php
-require_once("includes/config.php");
-require_once("includes/classes/PreviewProvider.php");
-require_once("includes/classes/Entity.php");
-
-if(isset($_SESSION["userLoggedIn"])) {
-    header("Location: register.php");
-}
-
-$userLoggedIn = $_SESSION["usserLoggedIn"];
+require_once("includes/header.php");
 
 $preview = new PreviewProvider($con, $userLoggedIn);
-$preview->createPreviewVideo(null);
-
+echo $preview->createPreviewVideo(null);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +14,5 @@ $preview->createPreviewVideo(null);
             <title>Index Page</title>
         </head>
             <body>
-                <p>Helllo</p>
             </body>
 </html>

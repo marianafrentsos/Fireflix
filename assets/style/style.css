@@ -90,3 +90,59 @@ body {
   font-size: 10px;
   font-weight: 600;
 }
+
+.previewImage,
+.previewContainer,
+.previewVideo {
+  width: 100%;
+}
+
+.previewContainer {
+  position: relative;
+  display: flex;
+}
+
+.previewOverlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+}
+
+.movieTitle {
+  font-size: 40px;
+  margin: 15px 0;
+  color: white;
+}
+
+.mainDetails {
+  position: relative;
+  top: 35%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.mainDetails button {
+  background-color: rgba(51, 51, 51, 0.4);
+  color: #fff;
+  border: none;
+  min-width: 150;
+  padding: 0 38px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 18px;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+button i {
+  color: inherit;
+}
+
+.mainDetails button:hover {
+  background-color: #e6e6e6;
+  color: #000;
+}
