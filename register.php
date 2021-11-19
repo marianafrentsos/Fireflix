@@ -18,7 +18,7 @@ if(isset($_POST["submitButton"])) {
 
     $succes = $account->register($firstName, $lastName, $userName, $email, $email2, $password, $password2);
     if($succes){
-        $_SESSION["usserLoggedIn"] = $userName;
+        $_SESSION["userLoggedIn"] = $userName;
         header("Location: index.php"); //if data was introduced succesfully, redirect to this page
     }
 }

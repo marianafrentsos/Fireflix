@@ -3,12 +3,39 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 20px;
+  border: 1px solid #b20710;
 }
 
 * {
   font-family: Arial, Helvetica, sans-serif;
   color: #333;
   box-sizing: border-box;
+}
+
+h3 {
+  color: #e5e5e5;
+}
+
+a h3:hover {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
 }
 
 .wrapper {
@@ -108,7 +135,7 @@ body {
   display: flex;
 }
 .previewContainer.small {
-  min-width: 17%;
+  width: 300px;
   height: 129px;
   margin-right: 4px;
   display: inline-flex;
@@ -167,6 +194,75 @@ button i {
   color: #000;
 }
 
-.categorieRow {
+.category {
   display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.entities,
+.videos {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+.entities::-webkit-scrollbar,
+.videos::-webkit-scrollbar {
+  height: 0;
+  scroll-behavior: smooth;
+}
+
+.previewCategories {
+  padding: 0 50px;
+}
+
+.errorBanner {
+  position: absolute;
+  top: 25%;
+  color: #efefee;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.season {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+
+.episodeContainer {
+  display: inline-flex;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.episodeContainer .contents {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+}
+
+.episodeContainer img {
+  width: 230px;
+  height: 129px;
+  object-fit: cover;
+}
+
+.episodeContainer .videoInfo h4,
+.episodeContainer .videoInfo span {
+  color: #fff;
+  width: 100%;
+  white-space: normal;
+}
+
+.episodeContainer .videoInfo {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.previewCategories.noScroll .category .entities {
+  white-space: normal;
 }

@@ -29,9 +29,6 @@ class Account {
         $query=$con->prepare("SELECT * FROM users WHERE username=:un AND password=:pw");
         $query->bindValue(":un", $un);
         $query->bindValue(":pw", $pw);   
-        
-        var_dump($un);
-        var_dump($pw);
 
         $query->execute();
 
@@ -55,8 +52,6 @@ class Account {
         $query->bindValue(":un", $un);
         $query->bindValue(":em", $em);
         $query->bindValue(":pw", $pw);
-
-        var_dump($pw);
 
         return $query->execute();
         //return true or false depending if the data was inserted in the DB

@@ -13,7 +13,7 @@
         $succes = $account->login($userName, $password);
 
         if($succes){
-            $_SESSION["usserLoggedIn"] = $userName;
+            $_SESSION["userLoggedIn"] = $userName;
             header("Location: index.php"); //if data was introduced succesfully, redirect to this page
         }
     }

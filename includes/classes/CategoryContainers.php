@@ -18,7 +18,23 @@ class CategoryContainers {
         $html = "<div class='previewCategories'>";
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $html .= $this->getCategoryHTML($row, null, true, true);
+            $html .= $this->getCategoryHTML($row, $title, true, true);
+        }
+
+        return $html . "</div>";
+
+    }
+
+    public function showCategory($categoryId, $title = null) {
+        Global $con;
+        $query = $con->prepare("SELECT * FROM categories WHERE id=:id");
+        $query->bindValue(":id", $categoryId);
+        $query->execute();
+
+        $html = "<div class='previewCategories noScroll'>";
+
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $html .= $this->getCategoryHTML($row, $title, true, true);
         }
 
         return $html . "</div>";
@@ -43,13 +59,21 @@ class CategoryContainers {
             return;
         }
 
-        $entitiesHtml = "<div class='categorieRow'>";
+        $entitiesHtml = "";
         $previewProvider = new PreviewProvider($this->con, $this->username);
 
         foreach($entities as $entity) {
             $entitiesHtml .= $previewProvider->createEntityPreviewSquare($entity);
         }
-        return $entitiesHtml . "</div>";
+
+        return "<div class='category'>
+                    <a href='category.php?id=$categoryId'>
+                        <h3>$title</h3>
+                    </a>
+                    <div class='entities'>
+                        $entitiesHtml
+                    </div>
+                </div>";
         
     }
 }
