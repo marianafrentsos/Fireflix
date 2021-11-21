@@ -10,3 +10,101 @@ function previewEnded() {
   $(".previewVideo").toggle();
   $(".previewImage").toggle();
 }
+
+function goBack() {
+  window.history.back();
+}
+
+function toggleTimer() {
+  let timeout = null;
+
+  $(document).on("mousemove", function () {
+    clearTimeout(timeout);
+    $(".watchNav").fadeIn();
+
+    timeout = setTimeout(function () {
+      $(".watchNav").fadeOut();
+    }, 2000);
+  });
+}
+
+function initVideo(videoId, username) {
+  toggleTimer();
+  setStartTime(videoId, username);
+  updateProgressTimer(videoId, username);
+}
+
+function updateProgressTimer(videoId, username) {
+  addDuration(videoId, username);
+
+  //update the duration of the video
+  let timer;
+  $("video")
+    .on("playing", function (event) {
+      window.clearInterval(timer);
+      timer = window.setInterval(function () {
+        updateProgress(videoId, username, event.target.currentTime);
+      }, 3000);
+    })
+    .on("ended", function () {
+      setFinished(videoId, username);
+      window.clearInterval(timer);
+    });
+}
+
+function addDuration(videoId, username) {
+  $.post(
+    "ajax/addDuration.php",
+    { videoId: videoId, username: username },
+    function (data) {
+      if (data !== null && data !== "") {
+        console.log(data);
+      }
+    }
+  );
+}
+
+function updateProgress(videoId, username, progress) {
+  $.post(
+    "ajax/updateDuration.php",
+    { videoId: videoId, username: username, progress: progress },
+    function (data) {
+      if (data !== null && data !== "") {
+        console.log(data);
+      }
+    }
+  );
+}
+
+function setFinished(videoId, username) {
+  $.post(
+    "ajax/setFinished.php",
+    { videoId: videoId, username: username },
+    function (data) {
+      if (data !== null && data !== "") {
+        console.log(data);
+      }
+    }
+  );
+}
+
+//resume video from where the user left off
+function setStartTime(videoId, username) {
+  $.post(
+    "ajax/getProgress.php",
+    { videoId: videoId, username: username },
+    function (data) {
+      if (isNaN(data)) {
+        console.log(data);
+        return;
+      }
+
+      $("video").on("canplay", function () {
+        console.log(data);
+
+        this.currentTime = data;
+        $("video").off("canplay");
+      });
+    }
+  );
+}

@@ -18,7 +18,7 @@ class CategoryContainers {
         $html = "<div class='previewCategories'>";
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $html .= $this->getCategoryHTML($row, $title, true, true);
+            $html .= $this->getCategoryHTML($row, null, true, true);
         }
 
         return $html . "</div>";

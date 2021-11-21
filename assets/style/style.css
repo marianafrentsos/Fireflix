@@ -266,3 +266,29 @@ button i {
 .previewCategories.noScroll .category .entities {
   white-space: normal;
 }
+
+.watchContainer video {
+  width: 100%;
+}
+
+.videoControls {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.videoControls h1 {
+  color: #fff;
+}
+
+.iconButton {
+  font-size: 50px;
+  color: #fff;
+  padding: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
