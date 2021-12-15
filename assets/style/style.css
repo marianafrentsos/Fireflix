@@ -160,6 +160,12 @@ a {
   font-size: 40px;
   margin: 15px 0;
   color: white;
+  background-color: transparent;
+  padding: 0;
+}
+
+.mainDetails .seasonEpisode {
+  color: #fff;
 }
 
 .mainDetails {
@@ -267,6 +273,10 @@ button i {
   white-space: normal;
 }
 
+.watchContainer {
+  position: relative;
+}
+
 .watchContainer video {
   width: 100%;
 }
@@ -291,4 +301,96 @@ button i {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.videoControls.upNext {
+  justify-content: flex-end;
+  flex-direction: column;
+  bottom: 6em;
+  right: 5em;
+  width: 40%;
+  background-color: unset;
+}
+
+.upNextContainer {
+  opacity: 1;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  will-change: opacity;
+  color: #fff;
+  bottom: 2.6rem;
+  background-color: #141414;
+  padding: 1.5rem;
+}
+
+.upNextContainer h2,
+h3 {
+  color: #fff;
+  background-color: rgb(38, 38, 38);
+  margin: 0;
+  padding: 2rem;
+}
+
+.upNextContainer h3 {
+  padding: 1rem 2rem;
+}
+
+.upNextContainer p {
+  padding: 2rem;
+}
+
+.upNextContainer h2,
+.upNextContainer h3,
+.upNextContainer p {
+  color: #fff;
+}
+.watchNav {
+  z-index: 2;
+}
+
+.goBackBtn img {
+  height: 2.2rem;
+  cursor: pointer;
+}
+
+.goBackBtn {
+  background: transparent;
+  border: none;
+  padding: 0 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.playNext {
+  padding: 0 2.4rem 0 2rem;
+  -webkit-box-align: center;
+  align-items: center;
+  appearance: none;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  opacity: 1;
+  padding: 0.8rem;
+  position: relative;
+  user-select: none;
+  will-change: background-color, color;
+  word-break: break-word;
+  white-space: nowrap;
+  font-weight: 900;
+  align-self: flex-end;
+}
+
+.playNext i {
+  width: 2.4rem;
+}
+
+.playNext:hover {
+  background-color: rgba(255, 255, 255, 0.75);
 }

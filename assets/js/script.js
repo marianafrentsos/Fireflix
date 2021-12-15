@@ -100,11 +100,24 @@ function setStartTime(videoId, username) {
       }
 
       $("video").on("canplay", function () {
-        console.log(data);
-
         this.currentTime = data;
         $("video").off("canplay");
       });
     }
   );
+}
+
+function restartVideo() {
+  $("video")[0].currentTime = 0;
+  $("video")[0].play();
+  $(".upNext").fadeOut;
+}
+
+function watchVideo(videoId) {
+  window.location.href = "watch.php?id=" + videoId;
+}
+
+function showUpNext() {
+  $(".upNext").fadeIn;
+  $(".upNext").removeClass("hidden");
 }

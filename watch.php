@@ -9,14 +9,34 @@ $videoId=$_GET["id"];
 $video = new Video($con, $videoId);
 $video->incrementViews();
 
+$upNextVideo = VideoProvider::getUpNext($con, $video);
+
 ?>
 
 <div class="watchContainer">
     <div class="videoControls watchNav">
-        <button class="iconButton" onClick=goBack()><i class="fas fa-arrow-left"></i></button>
+        <button class="goBackBtn" onClick="goBack()"><img src="assets/images/long-arrow-left.svg"></button>
         <h1><?php echo $video->getTitle(); ?></h1>
-</div>
-    <video controls autoplay playsinline muted>
+    </div>
+
+    <div class="videoControls upNext hidden">
+        <!-- <button onClick="restartVideo()"><i class="fas fa-redo"></i></button> -->
+        <div class="upNextContainer">
+        <h2><?php echo $upNextVideo->getTitle(); echo $upNextVideo->getSeasonAndEpisode(); ?> </h2>
+        <h3><?php echo $upNextVideo->getSeasonAndEpisode(); ?> </h3>
+
+            <!-- <h3><?php echo $upNextVideo->getTitle(); ?></h3> -->
+            <!-- <h3><?php echo $upNextVideo->getSeasonAndEpisode(); ?></h3> -->
+            <p><?php echo $upNextVideo->getDescription(); ?></p>
+        </div>
+
+        <button class="playNext" onClick="watchVideo(<?php echo $upNextVideo->getId(); ?>)">
+            <i class="fas fa-play"></i> 
+            <span>Next Episode</span>
+        </button>
+    </div>    
+
+    <video controls autoplay playsinline muted onended="showUpNext()">
         <source src='<?php echo $video->getFilePath(); ?>' type="video/mp4">
     </video>
 </div>
